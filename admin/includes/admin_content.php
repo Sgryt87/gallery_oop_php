@@ -9,13 +9,22 @@
             </h1>
 
             <?php
+            $user = new User();
+            $result_set = User::find_all_users();
+            while ($row = mysqli_fetch_array($result_set)) {
+                echo $row['username'] . "<br>";
+            }
 
-            if($database->connection){
-                echo 'true';
-            }?>
+            $found_user = User::find_user_by_id(3);
+            $user = User::instantiation($found_user);
+
+            echo $user->password;
+
+
+            ?>
             <ol class="breadcrumb">
                 <li>
-                    <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                    <i class="fa fa-dashboard"></i> <a href="index.php">Dashboard</a>
                 </li>
                 <li class="active">
                     <i class="fa fa-file"></i> Blank Page

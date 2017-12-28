@@ -1,7 +1,7 @@
 <?php
 include 'includes/header.php';
 include 'includes/init.php';
-global $database;
+
 ?>
 
 <!-- Navigation -->
