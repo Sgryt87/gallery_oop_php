@@ -22,7 +22,6 @@ class Database
     public function query($sql)
     {
         $result = mysqli_query($this->connection, $sql);
-
         return $result;
     }
 
@@ -41,5 +40,3 @@ class Database
 }
 
 $database = new Database();
-
-
