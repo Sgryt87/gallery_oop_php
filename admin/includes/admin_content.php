@@ -9,14 +9,15 @@
             </h1>
 
             <?php
-                $user = new User();
-                $user->username = 'john123';
-                $user->password = '123';
-                $user->first_name = 'John';
-                $user->last_name = 'Doe';
-
-                $user->create();
-
+//                $user = new User();
+//                $user->username = 'john';
+//                $user->password = '123';
+//                $user->first_name = 'John';
+//                $user->last_name = 'Doe';
+//
+//                $user->create();
+            $user = User::find_user_by_id(3);
+            $user->delete();
             ?>
             <ol class="breadcrumb">
                 <li>
