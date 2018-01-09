@@ -1,7 +1,6 @@
 <?php require_once 'init.php';
-//if (!$session->is_signed_in()) {
-//    redirect("login.php");
-//}
+ob_start();
+
 ?>
 
 <!DOCTYPE html>

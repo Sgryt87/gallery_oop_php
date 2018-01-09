@@ -28,7 +28,7 @@ class Database
     private function confirm_query($result)
     {
         if (!$result) {
-            die("Query failed" . mysqli_error());
+            die("Query failed" . mysqli_error($result));
         }
     }
 
