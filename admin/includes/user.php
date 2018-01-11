@@ -1,6 +1,6 @@
 <?php
 
-class User
+class User extends Db_object
 {
     protected static $db_table = 'users';
     protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name'];
@@ -11,30 +11,7 @@ class User
     public $first_name;
     public $last_name;
 
-    public static function find_all_users()
-    {
 
-        $query_users = "SELECT * FROM users";
-        return self::find_this_query($query_users);
-    }
-
-    public static function find_user_by_id($user_id)
-    {
-        $query_user_id = "SELECT * FROM users WHERE id = $user_id LIMIT 1";
-        $the_result_array = self::find_this_query($query_user_id);
-        return !empty($the_result_array) ? array_shift($the_result_array) : false;
-    }
-
-    public static function find_this_query($sql)
-    {
-        global $database;
-        $result_set = $database->query($sql);
-        $the_object_array = array();
-        while ($row = mysqli_fetch_array($result_set)) {
-            $the_object_array[] = self::instantiation($row);
-        }
-        return $the_object_array;
-    }
 
     public static function verify_user($username, $password)
     {
@@ -42,28 +19,13 @@ class User
         $username = $database->escape_string($username);
         $password = $database->escape_string($password);
 
-        $sql = "SELECT * FROM users WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
+        $sql = "SELECT * FROM " . self::$db_table . " WHERE username = '{$username}' AND password = '{$password}' LIMIT 1";
 
         $the_result_array = self::find_this_query($sql);
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
-    public static function instantiation($the_record)
-    {
-        $the_object = new self;
-        foreach ($the_record as $the_attribute => $value) {
-            if ($the_object->has_the_attribute($the_attribute)) {
-                $the_object->$the_attribute = $value;
-            }
-        }
-        return $the_object;
-    }
 
-    private function has_the_attribute($the_attribute)
-    {
-        $object_properties = get_object_vars($this);
-        return array_key_exists($the_attribute, $object_properties);
-    }
 
     protected function properties()
     {
@@ -110,7 +72,7 @@ class User
                                 last_name = '" . $database->escape_string($this->last_name) . "'
                                 WHERE id =  {$database->escape_string($this->id)}";
 
-        //$sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = " . {$database->escape_string($this->id)}// - sql error next to WHERE id.
+//        $sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = {$database->escape_string($this->id)}";
 
         $database->query($sql);
         return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
