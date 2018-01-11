@@ -2,6 +2,9 @@
 
 class User
 {
+    protected static $db_table = 'users';
+    protected static $db_table_fields = ['username', 'password', 'first_name', 'last_name'];
+
     public $id;
     public $username;
     public $password;
@@ -62,15 +65,28 @@ class User
         return array_key_exists($the_attribute, $object_properties);
     }
 
+    protected function properties()
+    {
+        $properties = [];
+        foreach (self::$db_table_fields as $db_field) {
+            if (property_exists($this, $db_field)) {
+                $properties[$db_field] = $this->$db_field;
+            }
+        }
+        return $properties;
+    }
+
+    public function save()
+    {
+        return isset($this->id) ? $this->update() : $this->create();
+    }
+
     public function create()
     {
         global $database;
-        $sql = "INSERT INTO users(username, password, first_name, last_name) 
-                VALUES('" .
-            $database->escape_string($this->username) . "','" .
-            $database->escape_string($this->password) . "','" .
-            $database->escape_string($this->first_name) . "','" .
-            $database->escape_string($this->last_name) . "')";
+        $properties = $this->properties();
+        $sql = "INSERT INTO " . self::$db_table . "(" . implode(',', array_keys($properties)) . ") 
+                VALUES('" . implode("','", array_values($properties)) . "')";
 
         if ($database->query($sql)) {
             $this->id = $database->the_insert_id();
@@ -83,11 +99,20 @@ class User
     public function update()
     {
         global $database;
-        $sql = "UPDATE users SET username = '" . $database->escape_string($this->username) . "',  
-                                password = '" . $database->escape_string($this->password) . "',  
-                                first_name = '" . $database->escape_string($this->first_name) . "',  
+        $properties = $this->properties();
+        $properties_pairs = [];
+        foreach ($properties as $key => $value) {
+            $properties_pairs = "{$key}='{$value}'";
+        }
+        $sql = "UPDATE users SET username = '" . $database->escape_string($this->username) . "',
+                                password = '" . $database->escape_string($this->password) . "',
+                                first_name = '" . $database->escape_string($this->first_name) . "',
                                 last_name = '" . $database->escape_string($this->last_name) . "'
                                 WHERE id =  {$database->escape_string($this->id)} ";
+
+        //$sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = " . // - sql
+        // error next to WHERE id.
+        $database->escape_string($this->id) ;
 
         $database->query($sql);
         return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
@@ -96,7 +121,7 @@ class User
     public function delete()
     {
         global $database;
-        $sql = "DELETE FROM users WHERE id = {$database->escape_string($this->id)} LIMIT 1";
+        $sql = "DELETE FROM " . self::$db_table . " WHERE id = {$database->escape_string($this->id)} LIMIT 1";
         $database->query($sql);
         return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
     }
