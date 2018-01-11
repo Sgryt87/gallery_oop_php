@@ -84,7 +84,7 @@ class User
     public function create()
     {
         global $database;
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
         $sql = "INSERT INTO " . self::$db_table . "(" . implode(',', array_keys($properties)) . ") 
                 VALUES('" . implode("','", array_values($properties)) . "')";
 
@@ -99,7 +99,7 @@ class User
     public function update()
     {
         global $database;
-        $properties = $this->properties();
+        $properties = $this->clean_properties();
         $properties_pairs = [];
         foreach ($properties as $key => $value) {
             $properties_pairs = "{$key}='{$value}'";
@@ -108,14 +108,22 @@ class User
                                 password = '" . $database->escape_string($this->password) . "',
                                 first_name = '" . $database->escape_string($this->first_name) . "',
                                 last_name = '" . $database->escape_string($this->last_name) . "'
-                                WHERE id =  {$database->escape_string($this->id)} ";
+                                WHERE id =  {$database->escape_string($this->id)}";
 
-        //$sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = " . // - sql
-        // error next to WHERE id.
-        $database->escape_string($this->id) ;
+        //$sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = " . {$database->escape_string($this->id)}// - sql error next to WHERE id.
 
         $database->query($sql);
         return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
+    }
+
+    protected function clean_properties()
+    {
+        global $database;
+        $clean_properties = [];
+        foreach ($this->properties() as $key => $value) {
+            $clean_properties[$key] = $database->escape_string($value);
+        }
+        return $clean_properties;
     }
 
     public function delete()
