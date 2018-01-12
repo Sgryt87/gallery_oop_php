@@ -97,13 +97,15 @@ class Db_object
         foreach ($properties as $key => $value) {
             $properties_pairs = "{$key}='{$value}'";
         }
-        $sql = "UPDATE users SET username = '" . $database->escape_string($this->username) . "',
-                                password = '" . $database->escape_string($this->password) . "',
-                                first_name = '" . $database->escape_string($this->first_name) . "',
-                                last_name = '" . $database->escape_string($this->last_name) . "'
-                                WHERE id =  {$database->escape_string($this->id)}";
+//        $sql = "UPDATE users SET username = '" . $database->escape_string($this->username) . "',
+//                                password = '" . $database->escape_string($this->password) . "',
+//                                first_name = '" . $database->escape_string($this->first_name) . "',
+//                                last_name = '" . $database->escape_string($this->last_name) . "'
+//                                WHERE id =  {$database->escape_string($this->id)}";
 
-//        $sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = {$database->escape_string($this->id)}";
+        //for some reason it kicks back an error in sql .. 
+        $sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = {$database->escape_string($this->id)}";
+
 
         $database->query($sql);
         return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
