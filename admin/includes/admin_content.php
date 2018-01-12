@@ -36,10 +36,10 @@
 //                                echo $photo->title;
 //                            }
 
-                                $photo = new Photo();
-                                $photo->title = 'Random';
-                                $photo->size = '100';
-                                $photo->create();
+//                                $photo = new Photo();
+//                                $photo->title = 'Random';
+//                                $photo->size = '100';
+//                                $photo->create();
 
 
             ?>
