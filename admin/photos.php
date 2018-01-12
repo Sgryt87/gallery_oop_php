@@ -1,5 +1,9 @@
 <?php
 include 'includes/header.php';
+if (!$session->is_signed_in()) {
+    redirect("login.php");
+}
+$photos = Photo::find_all();
 
 ?>
 
@@ -19,17 +23,34 @@ include 'includes/header.php';
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                       Photos
+                        Photos
                         <small>Subheading</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-file"></i> Blank Page
-                        </li>
-                    </ol>
+                    <div class="col-md-12">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Id</th>
+                                <th>File Name</th>
+                                <th>Title</th>
+                                <th>Size</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                            foreach ($photos as $photo) : ?>
+                                <tr>
+                                    <td><img src="<?php echo $photo->picture_path();?>" alt="" width="100px;"></td>
+                                    <td><?php echo $photo->photo_id; ?></td>
+                                    <td><?php echo $photo->filename; ?></td>
+                                    <td><?php echo $photo->title; ?></td>
+                                    <td><?php echo $photo->size; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <!-- /.row -->
@@ -39,7 +60,6 @@ include 'includes/header.php';
 
     </div>
     <!-- /#page-wrapper -->
-
 
 
 <?php

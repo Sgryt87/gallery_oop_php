@@ -12,7 +12,7 @@ class Photo extends Db_object
     public $type;
     public $size;
 
-    public $tmo_path;
+    public $tmp_path;
     public $upload_directory = 'images';
     public $errors = [];
     public $upload_errors_array =
@@ -43,6 +43,12 @@ class Photo extends Db_object
         }
     }
 
+
+    public function picture_path()
+    {
+        return $this->upload_directory . DS . $this->filename;
+    }
+
     public function save()
     {
         if ($this->photo_id) {
@@ -51,7 +57,7 @@ class Photo extends Db_object
             if (!empty($this->errors)) {
                 return false;
             }
-            if (empty($this->filename) || empty($this->tmo_path)) {
+            if (empty($this->filename) || empty($this->tmp_path)) {
                 $this->errors[] = 'The file was not available';
                 return false;
             }
@@ -60,7 +66,7 @@ class Photo extends Db_object
                 $this->errors[] = "The file {$this->filename} already exists";
                 return false;
             }
-            if (move_uploaded_file($this->tmo_path, $target_path)) {
+            if (move_uploaded_file($this->tmp_path, $target_path)) {
                 if ($this->create()) {
                     unset($this->tmp_path);
                     return true;
