@@ -11,9 +11,9 @@ class Db_object
         return static::find_by_query($query_all);
     }
 
-    public static function find_by_id($user_id)
+    public static function find_by_id($id)
     {
-        $query_id = "SELECT * FROM " . static::$db_table . " WHERE id = $user_id LIMIT 1";
+        $query_id = "SELECT * FROM " . static::$db_table . " WHERE id = $id LIMIT 1";
         $the_result_array = static::find_by_query($query_id);
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }

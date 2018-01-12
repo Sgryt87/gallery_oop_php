@@ -16,6 +16,9 @@
 //                            $user->last_name = 'Pao';
 //                            $user->create();
 
+//                                $user = User::find_by_id(14);
+//                                echo $user->username;
+
 //                            $user = User::find_by_id(18);
 //                            $user->username = 'po';
 //                            $user->first_name = 'Po';
@@ -31,10 +34,10 @@
 //                                echo $user->username;
 //                            }
 
-//                            $photos = Photo::find_all();
-//                            foreach ($photos as $photo) {
-//                                echo $photo->title;
-//                            }
+                            $photos = Photo::find_all();
+                            foreach ($photos as $photo) {
+                                echo $photo->title;
+                            }
 
 //                                $photo = new Photo();
 //                                $photo->title = 'Random';

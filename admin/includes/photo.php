@@ -3,9 +3,9 @@
 class Photo extends Db_object
 {
     protected static $db_table = 'photos';
-    protected static $db_table_fields = ['photo_id', 'title', 'description', 'filename', 'type', 'size'];
+    protected static $db_table_fields = ['id', 'title', 'description', 'filename', 'type', 'size'];
 
-    public $photo_id;
+    public $id;
     public $title;
     public $description;
     public $filename;
@@ -51,7 +51,7 @@ class Photo extends Db_object
 
     public function save()
     {
-        if ($this->photo_id) {
+        if ($this->id) {
             $this->update();
         } else {
             if (!empty($this->errors)) {
@@ -75,6 +75,16 @@ class Photo extends Db_object
                 $this->errors[] = 'The file directory probably does not have a permission';
                 return false;
             }
+        }
+    }
+
+    public function delete_photo()
+    {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->picture_path();
+            return unlink($target_path) ? true : false;
+        } else {
+            return false;
         }
     }
 }
