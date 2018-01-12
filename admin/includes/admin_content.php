@@ -16,20 +16,31 @@
 //                            $user->last_name = 'Pao';
 //                            $user->create();
 
-//                            $user = User::find_by_id(16);
+//                            $user = User::find_by_id(18);
 //                            $user->username = 'po';
 //                            $user->first_name = 'Po';
 //                            $user->password = '123';
 //                            $user->last_name = 'Bo';
 //                            $user->update();
-//
-//                            $user = User::find_by_id(16);
+
+//                            $user = User::find_by_id(18);
 //                            $user->delete();
 
-                                $users = User::find_all();
-                                foreach ($users as $user) {
-                                    echo $user->username;
-                                }
+//                            $users = User::find_all();
+//                            foreach ($users as $user) {
+//                                echo $user->username;
+//                            }
+
+//                            $photos = Photo::find_all();
+//                            foreach ($photos as $photo) {
+//                                echo $photo->title;
+//                            }
+
+                                $photo = new Photo();
+                                $photo->title = 'Random';
+                                $photo->size = '100';
+                                $photo->create();
+
 
             ?>
             <ol class="breadcrumb">
