@@ -3,7 +3,7 @@
 // replaced   to static::;
 class Db_object
 {
-    protected static $db_table = 'users';
+    protected static $db_table = '';
 
     public static function find_all()
     {
@@ -85,7 +85,7 @@ class Db_object
             $this->id = $database->the_insert_id();
             return true;
         } else {
-            die('Query failed' . mysqli_error($database->connection));
+            die('Query failed 1' . mysqli_error($database->connection));
         }
     }
 
@@ -95,7 +95,7 @@ class Db_object
         $properties = $this->clean_properties();
         $properties_pairs = [];
         foreach ($properties as $key => $value) {
-            $properties_pairs = "{$key}='{$value}'";
+            $properties_pairs[] = "{$key}='{$value}'";
         }
 //        $sql = "UPDATE users SET username = '" . $database->escape_string($this->username) . "',
 //                                password = '" . $database->escape_string($this->password) . "',
@@ -103,12 +103,13 @@ class Db_object
 //                                last_name = '" . $database->escape_string($this->last_name) . "'
 //                                WHERE id =  {$database->escape_string($this->id)}";
 
-        //for some reason it kicks back an error in sql .. 
-        $sql = "UPDATE " . self::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id = {$database->escape_string($this->id)}";
 
+        $sql = "UPDATE " . static::$db_table . " SET " . implode(',', $properties_pairs) . " WHERE id =
+         {$database->escape_string($this->id)}";
 
         $database->query($sql);
-        return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
+        return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed 2' . mysqli_error
+            ($database->connection));
     }
 
 
@@ -117,7 +118,8 @@ class Db_object
         global $database;
         $sql = "DELETE FROM " . static::$db_table . " WHERE id = {$database->escape_string($this->id)} LIMIT 1";
         $database->query($sql);
-        return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed' . mysqli_error($database->connection));
+        return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed 3' . mysqli_error
+            ($database->connection));
     }
 
 }

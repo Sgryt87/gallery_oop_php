@@ -9,40 +9,58 @@
             </h1>
 
             <?php
-//                            $user = new User();
-//                            $user->username = 'aaa';
-//                            $user->password = '123';
-//                            $user->first_name = 'AAA';
-//                            $user->last_name = 'Pao';
-//                            $user->create();
+            //                                        $user = new User();
+            //                                        $user->username = 'aaa';
+            //                                        $user->password = '123';
+            //                                        $user->first_name = 'AAA';
+            //                                        $user->last_name = 'Pao';
+            //                                        $user->create();
 
-//                                $user = User::find_by_id(14);
-//                                echo $user->username;
+            //                                            $user = User::find_by_id(19);
+            //                                            echo $user->username;
 
-//                            $user = User::find_by_id(18);
-//                            $user->username = 'po';
-//                            $user->first_name = 'Po';
-//                            $user->password = '123';
-//                            $user->last_name = 'Bo';
-//                            $user->update();
+            //                                        $user = User::find_by_id(15);
+            //                                        $user->username = 'ko';
+            //                                        $user->first_name = 'Ko';
+            //                                        $user->password = '111';
+            //                                        $user->last_name = 'Mo';
+            //                                        $user->update();
 
-//                            $user = User::find_by_id(18);
-//                            $user->delete();
+            //                                        $user = User::find_by_id(19);
+            //                                        $user->delete();
 
-//                            $users = User::find_all();
-//                            foreach ($users as $user) {
-//                                echo $user->username;
-//                            }
+            //                            $users = User::find_all();
+            //                            foreach ($users as $user) {
+            //                                echo $user->username;
+            //                            }
 
-                            $photos = Photo::find_all();
-                            foreach ($photos as $photo) {
-                                echo $photo->title;
-                            }
+            //            $photos = Photo::find_all();
+            //            foreach ($photos as $photo) {
+            //                echo $photo->title;
+            //            }
 
-//                                $photo = new Photo();
-//                                $photo->title = 'Random';
-//                                $photo->size = '100';
-//                                $photo->create();
+            //            $photo = Photo::find_by_id(10);
+            //            $photo->delete();
+
+//                                    $photo = new Photo();
+//                                    $photo->title = 'Update';
+//                                    $photo->caption = 'Update';
+//                                    $photo->description = 'Update';
+//                                    $photo->filename = 'Update';
+//                                    $photo->alternate_text = 'Update';
+//                                    $photo->type = 'image';
+//                                    $photo->size = '222';
+//                                    $photo->create();
+//
+//                                                                $photo = Photo::find_by_id(11);
+//                                                                    $photo->title = 'Update1';
+//                                                                    $photo->caption = 'Update1';
+//                                                                    $photo->description = 'Update1';
+//                                                                    $photo->filename = 'Update1';
+//                                                                    $photo->alternate_text = 'Update1';
+//                                                                    $photo->type = 'image1';
+//                                                                    $photo->size = '2221';
+//                                                                $photo->update();
 
 
             ?>
