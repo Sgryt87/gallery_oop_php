@@ -15,6 +15,7 @@ if (empty($_GET['id'])) {
             $photo->description = $_POST['description'];
 
             $photo->save();
+         //   redirect('photos.php');
         }
     }
 }
@@ -48,6 +49,11 @@ if (empty($_GET['id'])) {
                                 <input type="text" name="title" class="form-control" value="<?php echo $photo->title;
                                 ?>">
                             </div>
+                            <div class="form-group">
+                                <a href="#"><img src="<?php echo $photo->picture_path();?>" alt="<?php echo
+                                    $photo->title;?>" class="thumbnail img-responsive"></a>
+                            </div>
+
                             <div class="form-group">
                                 <label for="caption">Caption</label>
                                 <input type="text" name="caption" class="form-control" value="<?php echo
