@@ -16,7 +16,6 @@ class User extends Db_object
     public $image_placeholder = 'images/user.png';
 
 
-
 // need to abstract the method replacing filename to user_image //
 //    public function save()
 //    {

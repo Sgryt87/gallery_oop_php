@@ -87,10 +87,10 @@ if (empty($_GET['id'])) {
                                             Photo Id: <span class="data photo_id_box"><?php echo $photo->id ?></span>
                                         </p>
                                         <p class="text">
-                                            Filename: <span class="data"><?php echo $photo->title ?></span>
+                                            Filename: <span class="data"><?php echo $photo->filename ?></span>
                                         </p>
                                         <p class="text">
-                                            Fyle Type: <span class="data"><?php echo $photo->filename ?></span>
+                                            File Type: <span class="data"><?php echo $photo->type ?></span>
                                         </p>
                                         <p class="text">
                                             File Size: <span class="data"><?php echo $photo->size ?></span>
