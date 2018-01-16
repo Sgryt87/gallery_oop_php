@@ -15,6 +15,8 @@ if (empty($_GET['id'])) {
             $user->last_name = $_POST['last_name'];
             $user->password = $_POST['password'];
             if (empty($_FILES['user_image'])) {
+                $user->set_file($_FILES['user_image']);
+                $user->upload_photo();
                 $user->save();
             } else {
                 $user->set_file($_FILES['user_image']);
