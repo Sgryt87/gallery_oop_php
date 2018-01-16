@@ -15,7 +15,6 @@ class Photo extends Db_object
     public $type;
     public $size;
 
-    public $tmp_path;
     public $upload_directory = 'images';
     public $errors = [];
     public $upload_errors_array =
@@ -29,6 +28,8 @@ class Photo extends Db_object
             UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
             UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload.'
         ];
+
+
 
     public function set_file($file)
     {

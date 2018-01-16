@@ -3,11 +3,40 @@
 // replaced   to static::;
 class Db_object
 {
+    public $errors = [];
+    public $upload_errors_array =
+        [
+            UPLOAD_ERR_OK => 'There is no error, the file uploaded with success.',
+            UPLOAD_ERR_INI_SIZE => 'The uploaded file exceeds the upload max file size.',
+            UPLOAD_ERR_FORM_SIZE => 'The uploaded file exceeds the max file size.',
+            UPLOAD_ERR_PARTIAL => 'The uploaded file was only partially uploaded.',
+            UPLOAD_ERR_NO_FILE => 'No file was uploaded.',
+            UPLOAD_ERR_NO_TMP_DIR => 'Missing a temporary folder.',
+            UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
+            UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload.'
+        ];
+
     protected static $db_table = '';
+
+    public function set_file($file)
+    {
+        if (empty($file) || !$file || !is_array($file)) {
+            $this->errors[] = 'There was no file uploaded here';
+            return false;
+        } elseif ($file['error'] != 0) {
+            $this->errors[] = $this->upload_errors_array[$file['error']];
+            return false;
+        } else {
+            $this->user_image = basename($file['name']);
+            $this->tmp_path = $file['tmp_name'];
+            $this->type = $file['type'];
+            $this->size = $file['size'];
+        }
+    }
 
     public static function find_all()
     {
-        $query_all = "SELECT * FROM " . static::$db_table . " ";
+        $query_all = "SELECT * FROM " . static::$db_table . "";
         return static::find_by_query($query_all);
     }
 
@@ -22,7 +51,7 @@ class Db_object
     {
         global $database;
         $result_set = $database->query($sql);
-        $the_object_array = array();
+        $the_object_array = [];
         while ($row = mysqli_fetch_array($result_set)) {
             $the_object_array[] = static::instantiation($row);
         }
