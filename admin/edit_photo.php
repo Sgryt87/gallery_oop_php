@@ -15,7 +15,7 @@ if (empty($_GET['id'])) {
             $photo->description = $_POST['description'];
 
             $photo->save();
-         //   redirect('photos.php');
+            redirect('photos.php');
         }
     }
 }
@@ -50,8 +50,8 @@ if (empty($_GET['id'])) {
                                 ?>">
                             </div>
                             <div class="form-group">
-                                <a href="#"><img src="<?php echo $photo->picture_path();?>" alt="<?php echo
-                                    $photo->title;?>" class="thumbnail img-responsive"></a>
+                                <a href="#"><img src="<?php echo $photo->picture_path(); ?>" alt="<?php echo
+                                    $photo->title; ?>" class="thumbnail img-responsive"></a>
                             </div>
 
                             <div class="form-group">

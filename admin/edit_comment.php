@@ -51,7 +51,8 @@ if (empty($_GET['id'])) {
                             </div>
                             <div class="form-group">
                                 <label for="body">Body</label>
-                                <textarea name="body" id="" rows="10"><?php echo $comment->body; ?></textarea>
+                                <textarea name="body" id="" rows="3" class="form-control"><?php echo $comment->body;
+                                ?></textarea>
                             </div>
                             <div class="form-group">
                                 <a href="delete_comment.php?id=<?php echo $comment->id; ?>" class="btn
