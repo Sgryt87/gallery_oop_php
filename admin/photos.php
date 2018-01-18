@@ -3,7 +3,15 @@ include 'includes/header.php';
 if (!$session->is_signed_in()) {
     redirect("login.php");
 }
-$photos = Photo::find_all();
+//$photos = Photo::find_all();
+
+$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+$items_per_page = 4;
+$items_total_count = Photo::count_all();
+$paginate = new Paginate($page, $items_per_page, $items_total_count);
+
+$sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset()}";
+$photos = Photo::find_by_query($sql);
 
 ?>
 
@@ -73,6 +81,29 @@ $photos = Photo::find_all();
                 </div>
             </div>
             <!-- /.row -->
+            <div class="row">
+                <nav aria-label="" class="text-center">
+                    <ul class="pagination">
+                        <?php if ($paginate->page_total() > 1) {
+                            if ($paginate->has_previous()) {
+                                echo "<li class='previous'><a href = 'photos.php?page={$paginate->previous()}'>Prev</a></li>";
+                            }
+                            for ($i = 1; $i <= $paginate->page_total(); $i++) {
+
+                                if ($i == $paginate->current_page) {
+                                    echo "<li><a href='photos.php?page={$i}'>{$i}</a></li>";
+                                } else {
+                                    echo "<li><a href='photos.php?page={$i}'>{$i}</a></li>";
+                                }
+                            }
+                            if ($paginate->has_next()) {
+                                echo "<li class='next'><a href = 'photos.php?page={$paginate->next()}'>Next</a></li>";
+                            }
+
+                        } ?>
+                    </ul>
+                </nav>
+            </div>
 
         </div>
         <!-- /.container-fluid -->

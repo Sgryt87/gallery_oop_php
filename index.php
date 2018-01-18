@@ -11,7 +11,6 @@ $paginate = new Paginate($page, $items_per_page, $items_total_count);
 $sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset()}";
 $photos = Photo::find_by_query($sql);
 
-//$photos = Photo::find_all();
 ?>
 
     <!-- Page Content -->
@@ -25,14 +24,34 @@ $photos = Photo::find_by_query($sql);
 
                     <div class="col-xs-6 col-md-3">
                         <a href="photo.php?id=<?php echo "$photo->id"; ?>" class="thumbnail">
-                            <img src="admin/<?php echo $photo->picture_path(); ?>" alt="" class="img-responsive"
-                                 style="width: 200px; height: 150px;">
+                            <img src="admin/<?php echo $photo->picture_path(); ?>" alt=""
+                                 class="img-responsive home_page_photo">
                         </a>
                     </div>
 
                 <?php endforeach; ?>
             </div>
-
+            <div class="row">
+                <nav aria-label="" class="text-center">
+                    <ul class="pagination">
+                        <?php if ($paginate->page_total() > 1) {
+                            if ($paginate->has_previous()) {
+                                echo "<li class='previous'><a href = 'index.php?page={$paginate->previous()}'>Prev</a></li>";
+                            }
+                            for ($i = 1; $i <= $paginate->page_total(); $i++) {
+                                if ($i == $paginate->current_page) {
+                                    echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+                                } else {
+                                    echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
+                                }
+                            }
+                            if ($paginate->has_next()) {
+                                echo "<li class='next'><a href = 'index.php?page={$paginate->next()}'>Next</a></li>";
+                            }
+                        } ?>
+                    </ul>
+                </nav>
+            </div>
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
