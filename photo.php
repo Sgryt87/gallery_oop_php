@@ -1,5 +1,6 @@
 <?php
-//require_once 'admin/includes/init.php';
+
+require_once "admin/includes/init.php";
 require_once "admin/includes/functions.php";
 require_once 'admin/includes/new_config.php';
 require_once 'admin/includes/database.php';
@@ -13,7 +14,7 @@ require_once 'admin/includes/comment.php';
 if (empty($_GET['id'])) {
     redirect('index.php');
 }
-$photo = new Photo();
+
 $photo = Photo::find_by_id($_GET['id']);
 
 
@@ -40,18 +41,18 @@ include 'includes/header.php';
 include 'includes/navigation.php';
 ?>
 
-<!-- Page Content -->
-<div class="container">
+    <!-- Page Content -->
+    <div class="container">
 
     <div class="row">
 
         <!-- Blog Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
             <!-- Blog Post -->
 
             <!-- Title -->
-            <h1>Blog Post Title</h1>
+            <h1><?php echo $photo->title; ?></h1>
 
             <!-- Author -->
             <p class="lead">
@@ -66,11 +67,15 @@ include 'includes/navigation.php';
             <hr>
 
             <!-- Preview Image -->
-            <img class="img-responsive" src="<?php echo $photo->picture_path(); ?>" alt="">
+            <img class="img-responsive" src="admin/<?php echo $photo->picture_path(); ?>" alt="" style="width: 100%;">
 
             <hr>
 
-           
+            <p class="lead"><?php echo $photo->caption; ?> </p>
+            <p><?php echo $photo->description; ?> </p>
+
+            <hr>
+
 
             <!-- Comments Form -->
             <div class="well">
@@ -94,7 +99,8 @@ include 'includes/navigation.php';
                 <!-- Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                        <!--Users Image-->
+                        <img class="media-object" src="http://placehold.it/64x4" alt="">
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><?php echo $comment->author; ?>
@@ -111,13 +117,13 @@ include 'includes/navigation.php';
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-            <?php
-            include 'includes/sidebar.php';
-            ?>
-
-        </div>
+<!--        <div class="col-md-4">-->
+<!---->
+<!--            --><?php
+//            include 'includes/sidebar.php';
+//            ?>
+<!---->
+<!--        </div>-->
         <!-- /.row -->
     </div>
 
