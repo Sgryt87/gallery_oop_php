@@ -17,15 +17,17 @@
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
+            ['Views',     <?php echo $session->count;?>],
+            ['Comments', <? echo Comment::count_all();?>],
+            ['Users',  <? echo User::count_all();?>],
+            ['Photos',      <? echo Photo::count_all();?>],
         ]);
 
         var options = {
-            title: 'My Daily Activities',
+            legend: 'none',
+            pieSliceText: 'label',
+            backgroundColor: 'transparent',
+            //title: 'Admin',
             pieHole: 0.4,
         };
 
