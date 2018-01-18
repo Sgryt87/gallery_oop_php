@@ -1,28 +1,4 @@
-<?php if (isset($_POST['submit'])) {
-    echo 'LALALALAL';
-} ?>
 
-<!-- Page Content -->
-<div class="container">
-
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8">
-            <h1 class="page-header">
-                Page Heading
-                <small>Secondary Text</small>
-            </h1>
-            <!--CONTENT HERE-->
-
-
-
-
-
-
-        </div>
-
-        <!-- Blog Sidebar Widgets Column -->
-        <div class="col-md-4">
 
             <!-- Blog Search Well -->
             <div class="well">
@@ -78,8 +54,3 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus
                     laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
             </div>
-
-        </div>
-
-    </div>
-    <!-- /.row -->

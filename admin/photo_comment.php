@@ -31,7 +31,7 @@ $comments = Comment::find_the_comments($_GET['id']);
                     <h1 class="page-header">
                         Comments
                     </h1>
-<!--   message comment was deleted  -->
+                    <!--   message comment was deleted  -->
                     <div class="col-md-12">
                         <table class="table table-hover">
                             <thead>
@@ -52,7 +52,13 @@ $comments = Comment::find_the_comments($_GET['id']);
                                 <td><?php echo $comment->id; ?></td>
                                 <td><?php echo $comment->author; ?>
                                 </td>
-                                <td><p><?php echo $comment->body; ?></p></td>
+                                <td><p><?php echo substr($comment->body, 0, 50);
+                                        if (strlen($comment->body) > 50) {
+                                            echo "...";
+                                        } else {
+                                            echo "";
+                                        }
+                                        ?></p></td>
                                 <td>
                                     <div class="pictures_link">
                                         <a href="delete_photo_comment.php?id=<?php echo $comment->id ?>"
@@ -64,7 +70,7 @@ $comments = Comment::find_the_comments($_GET['id']);
                     </div>
                     </td>
                     </tr>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
                     </tbody>
                     </table>
                 </div>

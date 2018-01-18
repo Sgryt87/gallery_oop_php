@@ -38,11 +38,10 @@ if (empty($_GET['id'])) {
                         Comments
                         <small>Edit comment</small>
                     </h1>
-
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <h3 class="form-group">Id: <?php echo $comment->id; ?></h3>
+                                <h3 class="form-group">Photo Id: <?php echo $comment->photo_id; ?></h3>
                             </div>
                             <div class="form-group">
                                 <label for="first_name">Author</label>

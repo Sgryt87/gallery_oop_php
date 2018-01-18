@@ -8,70 +8,124 @@
                 <small>Subheading</small>
             </h1>
 
-            <?php
-            //                                        $user = new User();
-            //                                        $user->username = 'aaa';
-            //                                        $user->password = '123';
-            //                                        $user->first_name = 'AAA';
-            //                                        $user->last_name = 'Pao';
-            //                                        $user->create();
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-binoculars fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class='huge'><?php echo $session->count; ?></div>
+                                    <div>New Views</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="posts.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">View Details</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-camera-retro fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <!--                                    --><?php
+                                    //                                    $query = "SELECT * FROM comments";
+                                    //                                    $select_all_comments = mysqli_query($connection, $query);
+                                    //                                    $comments_counts = mysqli_num_rows($select_all_comments);
+                                    //
+                                    //                                    echo "<div class='huge'>{$comments_counts}</div>";
+                                    //                                    ?>
 
-            //                                            $user = User::find_by_id(19);
-            //                                            echo $user->username;
+                                    <div>Photos</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="comments.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Photos in Gallery</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-user fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <!--                                    --><?php
+                                    //                                    $query = "SELECT * FROM users";
+                                    //                                    $select_all_users = mysqli_query($connection, $query);
+                                    //                                    $users_counts = mysqli_num_rows($select_all_users);
+                                    //
+                                    //                                    echo "<div class='huge'>{$users_counts}</div>";
+                                    //                                    ?>
 
-            //                                        $user = User::find_by_id(15);
-            //                                        $user->username = 'ko';
-            //                                        $user->first_name = 'Ko';
-            //                                        $user->password = '111';
-            //                                        $user->last_name = 'Mo';
-            //                                        $user->update();
+                                    <div> Users</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="users.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Users</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-comments fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
 
-            //                                        $user = User::find_by_id(19);
-            //                                        $user->delete();
+                                    <!--                                    --><?php
+                                    //                                    $query = "SELECT * FROM categories";
+                                    //                                    $select_all_categories = mysqli_query($connection, $query);
+                                    //                                    $categories_counts = mysqli_num_rows($select_all_categories);
+                                    //
+                                    //                                    echo "<div class='huge'>{$categories_counts}</div>";
+                                    //                                    ?>
 
-            //                            $users = User::find_all();
-            //                            foreach ($users as $user) {
-            //                                echo $user->username;
-            //                            }
-
-            //            $photos = Photo::find_all();
-            //            foreach ($photos as $photo) {
-            //                echo $photo->title;
-            //            }
-
-            //            $photo = Photo::find_by_id(10);
-            //            $photo->delete();
-
-//                                    $photo = new Photo();
-//                                    $photo->title = 'Update';
-//                                    $photo->caption = 'Update';
-//                                    $photo->description = 'Update';
-//                                    $photo->filename = 'Update';
-//                                    $photo->alternate_text = 'Update';
-//                                    $photo->type = 'image';
-//                                    $photo->size = '222';
-//                                    $photo->create();
-//
-//                                                                $photo = Photo::find_by_id(11);
-//                                                                    $photo->title = 'Update1';
-//                                                                    $photo->caption = 'Update1';
-//                                                                    $photo->description = 'Update1';
-//                                                                    $photo->filename = 'Update1';
-//                                                                    $photo->alternate_text = 'Update1';
-//                                                                    $photo->type = 'image1';
-//                                                                    $photo->size = '2221';
-//                                                                $photo->update();
-
-
-            ?>
-            <ol class="breadcrumb">
-                <li>
-                    <i class="fa fa-dashboard"></i> <a href="index.php">Dashboard</a>
-                </li>
-                <li class="active">
-                    <i class="fa fa-file"></i> Blank Page
-                </li>
-            </ol>
+                                    <div>Comments</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="categories.php">
+                            <div class="panel-footer">
+                                <span class="pull-left">Total Comments</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="donutchart" style="width: 900px; height: 500px;"></div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- /.row -->
