@@ -1,19 +1,17 @@
 <?php
-defined('DS') ? null : define('DS', DIRECTORY_SEPARATOR);
-defined('SITE_ROOT') ? null : define('SITE_ROOT', DS . 'Applications' . DS . 'MAMP' . DS . 'htdocs' . DS . 'oop_project_gallery');
-defined('INCLUDES_PATH') ? null : define('INCLUDES_PATH', SITE_ROOT . DS . 'admin' . DS . 'includes');
-require_once "admin/includes/functions.php";
-require_once 'admin/includes/new_config.php';
-require_once 'admin/includes/database.php';
-require_once 'admin/includes/db_object.php';
-require_once 'admin/includes/user.php';
-require_once 'admin/includes/photo.php';
-require_once 'admin/includes/session.php';
-require_once 'admin/includes/comment.php';
+include 'admin/includes/init.php';
 include 'includes/header.php';
 include 'includes/navigation.php';
+//pagination
+$page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
+$items_per_page = 4;
+$items_total_count = Photo::count_all();
+$paginate = new Paginate($page, $items_per_page, $items_total_count);
 
-$photos = Photo::find_all();
+$sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset()}";
+$photos = Photo::find_by_query($sql);
+
+//$photos = Photo::find_all();
 ?>
 
     <!-- Page Content -->
@@ -26,7 +24,7 @@ $photos = Photo::find_all();
                 <?php foreach ($photos as $photo) : ?>
 
                     <div class="col-xs-6 col-md-3">
-                        <a href="photo.php?id=<?php echo "$photo->id";?>" class="thumbnail">
+                        <a href="photo.php?id=<?php echo "$photo->id"; ?>" class="thumbnail">
                             <img src="admin/<?php echo $photo->picture_path(); ?>" alt="" class="img-responsive"
                                  style="width: 200px; height: 150px;">
                         </a>
@@ -38,13 +36,13 @@ $photos = Photo::find_all();
         </div>
 
         <!-- Blog Sidebar Widgets Column -->
-<!--        <div class="col-md-4">-->
-<!---->
-<!--            --><?php
-//            include 'includes/sidebar.php';
-//            ?>
-<!---->
-<!--        </div>-->
+        <!--        <div class="col-md-4">-->
+        <!---->
+        <!--            --><?php
+        //            include 'includes/sidebar.php';
+        //            ?>
+        <!---->
+        <!--        </div>-->
         <!-- /.row -->
     </div>
 
