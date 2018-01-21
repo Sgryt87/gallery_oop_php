@@ -137,8 +137,7 @@ class Db_object
          {$database->escape_string($this->id)}";
 
         $database->query($sql);
-        return (mysqli_affected_rows($database->connection) == 1) ? true : die('Query failed 2' . mysqli_error
-            ($database->connection));
+        return (mysqli_affected_rows($database->connection) == 1) ? true : false;
     }
 
 

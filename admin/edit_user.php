@@ -27,7 +27,9 @@ if (empty($_GET['id'])) {
         }
     }
 }
+include 'includes/photo_library_modal.php';
 ?>
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -49,8 +51,10 @@ if (empty($_GET['id'])) {
                         <small>Edit User</small>
                     </h1>
                     <div class="col-md-6">
-                        <img src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""
-                             class="thumbnail img-responsive">
+                        <a href="# " data-toggle="modal" data-target="#photo-library">
+                            <img src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""
+                                 class="thumbnail img-responsive">
+                        </a>
                     </div>
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-6">

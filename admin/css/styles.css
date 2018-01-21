@@ -1,15 +1,15 @@
 /*SIDEBAR*/
 .photo-info-box {
     border: 1px solid #e5e5e5;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0, 0.04);
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.04);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     background-color: #fff;
 }
 
 .info-box-header {
     padding: 6px;
     border-bottom: 1px solid #e5e5e5;
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0, 0.04);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
     background-color: #fff;
 }
 
@@ -32,6 +32,7 @@
     background-color: #ddd;
     padding: 10px;
 }
+
 /* END SIDEBAR*/
 
 .admin-photo {
@@ -43,3 +44,29 @@
     width: 62px;
     height: 62px;
 }
+
+/*MODAL*/
+.modal-gialog {
+    width: 90% !important;
+}
+
+.modal-body {
+    overflow: auto;
+    height: 500px !important;
+    min-height: 300px !important;
+}
+
+.modal_thumbnails {
+    width: 159px;
+    height: 100px !important;
+}
+
+#set_user_image {
+    margin: 10px;
+}
+
+#modal-sidebar {
+    position: fixed !important;
+}
+
+/*END MODAL*/
