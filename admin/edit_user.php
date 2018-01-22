@@ -50,8 +50,8 @@ include 'includes/photo_library_modal.php';
                         Users
                         <small>Edit User</small>
                     </h1>
-                    <div class="col-md-6">
-                        <a href="# " data-toggle="modal" data-target="#photo-library">
+                    <div class="col-md-6 user_image_box">
+                        <a href="#" data-toggle="modal" data-target="#photo-library">
                             <img src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""
                                  class="thumbnail img-responsive">
                         </a>
@@ -84,7 +84,7 @@ include 'includes/photo_library_modal.php';
                                 $user->password; ?>">
                             </div>
                             <div class="form-group">
-                                <a href="delete_user.php?id=<?php echo $user->id; ?>" class="btn
+                                <a id="user-id" href="delete_user.php?id=<?php echo $user->id; ?>" class="btn
                                 btn-danger pull-left btn-lg">Delete</a>
                                 <input type="submit" name="update" value="Update" class="btn btn-primary pull-right
                                 btn-lg">

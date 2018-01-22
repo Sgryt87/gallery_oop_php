@@ -31,7 +31,7 @@ $photos = Photo::find_all();
             </div>
             <div class="modal-footer">
                 <div class="row">
-                    <button id="set_user_image" class="btn btn-primary" type="button"
+                    <button id="set_user_image" class="btn btn-primary" type="button" disabled="true"
                             data-dismiss="modal">Apply Selection
                     </button>
                 </div>
