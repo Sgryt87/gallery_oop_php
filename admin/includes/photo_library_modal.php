@@ -18,7 +18,7 @@ $photos = Photo::find_all();
                         <div class="col-xs-2">
                             <a href="#" role="checkbox" aria-checked="false" tabindex="0" class="thumbnail">
                                 <img src="<?php echo $photo->picture_path(); ?>" alt=""
-                                     class="modal_thumbnails img-responsive" data="">
+                                     class="modal_thumbnails img-responsive" data="<?php echo $photo->id;?>">
                             </a>
                             <div class="photo-id hidden"></div>
                         </div>

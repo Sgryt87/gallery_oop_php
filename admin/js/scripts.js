@@ -6,6 +6,7 @@ $(document).ready(function () {
     var image_href;
     var image_href_splited;
     var image_name;
+    var photo_id;
 
     $('.modal_thumbnails').click(function () {
         $('#set_user_image').prop('disabled', false);
@@ -16,6 +17,19 @@ $(document).ready(function () {
         image_href = $(this).prop('src');
         image_href_splited = image_href.split('/');
         image_name = image_href_splited[image_href_splited.length - 1];
+        // did pass data when used .prop();
+        photo_id = $(this).attr('data');
+
+        $.ajax({
+            url: 'includes/ajax_code.php',
+            data: {photo_id: photo_id},
+            type: 'POST',
+            success: function (data) {
+                if (!data.error) {
+                    $('#modal-sidebar').html(data);
+                }
+            }
+        });
     });
 
     $('#set_user_image').click(function () {
@@ -24,8 +38,8 @@ $(document).ready(function () {
             data: {image_name: image_name, user_id: user_id},
             type: 'POST',
             success: function (data) {
-                if(!data.error) {
-                    $('.user_image_box a img').prop('src',data);
+                if (!data.error) {
+                    $('.user_image_box a img').prop('src', data);
                     //location.reload(true);
                 }
             }

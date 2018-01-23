@@ -3,7 +3,7 @@
 class Photo extends Db_object
 {
     protected static $db_table = 'photos';
-    protected static $db_table_fields = ['id', 'title' ,'caption', 'description', 'filename', 'alternate_text', 'type',
+    protected static $db_table_fields = ['id', 'title', 'caption', 'description', 'filename', 'alternate_text', 'type',
         'size'];
 
     public $id;
@@ -28,7 +28,6 @@ class Photo extends Db_object
             UPLOAD_ERR_CANT_WRITE => 'Failed to write file to disk.',
             UPLOAD_ERR_EXTENSION => 'A PHP extension stopped the file upload.'
         ];
-
 
 
     public function set_file($file)
@@ -90,5 +89,19 @@ class Photo extends Db_object
         } else {
             return false;
         }
+    }
+
+    public static function display_sidebar_data($photo_id)
+    {
+        global $database;
+        $photo_id = $database->escape_string($photo_id);
+
+        $photo = Photo::find_by_id($photo_id);
+
+        $output = "<a class='thumbnail' href='#'><img width='100%' src='{$photo->picture_path()}'></a>";
+        $output .= "<p>{$photo->filename}</p>";
+        $output .= "<p>{$photo->type}</p>";
+        $output .= "<p>{$photo->size}</p>";
+        return $output;
     }
 }
