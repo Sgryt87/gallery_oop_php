@@ -24,6 +24,7 @@ if (empty($_GET['id'])) {
                 $user->save();
             }
             redirect('users.php');
+            $session->message('The user has been updated');
         }
     }
 }

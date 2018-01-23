@@ -31,7 +31,7 @@ $comments = Comment::find_the_comments($_GET['id']);
                     <h1 class="page-header">
                         Comments
                     </h1>
-                    <!--   message comment was deleted  -->
+                    <p class="bg-success"><?php echo $message; ?></p>
                     <div class="col-md-12">
                         <table class="table table-hover">
                             <thead>

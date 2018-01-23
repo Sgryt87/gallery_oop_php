@@ -12,11 +12,10 @@ if (isset($_POST['submit'])) {
         $user->last_name = $_POST['last_name'];
         $user->password = $_POST['password'];
         $user->set_file($_FILES['user_image']);
-        if ($user->save()) {
-            $message = 'User was successfully added';
-        } else {
-            $message = 'An error occurred';
-        }
+        $user->upload_photo();
+        $session->message("The {$user->username} has been added");
+        $user->save();
+        redirect('users.php');
     }
 }
 ?>
@@ -40,7 +39,7 @@ if (isset($_POST['submit'])) {
                         Users
                         <small>Add User</small>
                     </h1>
-                    <h3 class="text-info"><?php echo $message; ?></h3>
+                    <p class="bg-success"><?php echo $message; ?></p>
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">

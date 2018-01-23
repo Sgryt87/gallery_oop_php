@@ -10,6 +10,7 @@
 <!--Tinymce text editor-->
 <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script src="js/scripts.js"></script>
+<script src="js/dropzone.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>
 
 <script type="text/javascript">
