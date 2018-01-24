@@ -8,6 +8,20 @@ $(document).ready(function () {
     var image_name;
     var photo_id;
 
+    //Edit photo sidebar
+$('.info-box-header').click(function () {
+       $('.inside').slideToggle('fast');
+       $('#toggle').toggleClass('glyphicon glyphicon-menu-down, glyphicon glyphicon-menu-up');
+    });
+
+    //
+
+    // deleting confirmation
+$('#delete_link').click(function () {
+   return confirm('Do you want to delete this item?');
+});
+    //
+
     $('.modal_thumbnails').click(function () {
         $('#set_user_image').prop('disabled', false);
         user_href = $('#user-id').prop('href');

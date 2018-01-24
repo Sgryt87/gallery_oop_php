@@ -68,4 +68,12 @@
 #modal-sidebar {
     position: fixed !important;
 }
+
 /*END MODAL*/
+
+/*LOGIN PAGE*/
+#login-form label{
+    color: #fff;
+}
+
+/*END LOGIN PAGE*/

@@ -26,7 +26,7 @@ $photos = Photo::find_all();
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div id="modal-sidebar" style="width: 200px;"></div>
+                    <div id="modal-sidebar" style="max-width: 200px;"></div>
                 </div>
             </div>
             <div class="modal-footer">

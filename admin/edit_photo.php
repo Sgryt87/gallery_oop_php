@@ -22,7 +22,6 @@ if (empty($_GET['id'])) {
 
 
 ?>
-
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 
@@ -74,7 +73,7 @@ if (empty($_GET['id'])) {
                         <div class="col-md-4">
                             <div class="photo-info-box">
                                 <div class="info-box-header">
-                                    <h4>Save<span id="toggle" class="glyphicon glyphicon-menu-up pull-right"></span>
+                                    <h4>Save<span id="toggle" class="glyphicon glyphicon-menu-down pull-right"></span>
                                     </h4>
                                 </div>
                                 <div class="inside">

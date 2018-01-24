@@ -54,7 +54,7 @@ $photos = Photo::find_by_query($sql);
                                         ?>" alt="">
                                         <div class="action_links">
                                             <a href="delete_photo.php?id=<?php echo $photo->id ?>"
-                                               class="btn btn-danger">Delete</a>
+                                               class="btn btn-danger delete_link">Delete</a>
                                             <a href="edit_photo.php?id=<?php echo $photo->id ?>" class="btn btn-primary
                                             ">Edit</a>
                                             <a href="../photo.php?id=<?php echo $photo->id ?>" class="btn btn-info

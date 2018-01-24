@@ -50,7 +50,7 @@ $users = User::find_all();
                                     <td><?php echo $user->username; ?>
                                         <div class="pictures_link">
                                             <a href="delete_user.php?id=<?php echo $user->id ?>"
-                                               class="btn btn-danger btn-sm">Delete</a>
+                                               class="btn btn-danger btn-sm delete_link">Delete</a>
                                             <a href="edit_user.php?id=<?php echo $user->id ?>" class="btn btn-primary
                                             btn-sm">Edit</a>
                                         </div>
